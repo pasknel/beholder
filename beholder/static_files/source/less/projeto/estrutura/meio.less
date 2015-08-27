@@ -1,0 +1,325 @@
+
+/* 
+ * meio 
+ */
+
+.main {
+
+	// ###############################################################
+	// Home
+	.home {
+		.home-content {
+			position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: auto; padding: 8em 0px; 
+			z-index: 2;
+
+			.marca-home {
+				padding-top: 40px;
+			}
+
+			// sobre
+			.about {
+				padding: 10px; 
+				.wgt-post {
+					p {
+						color: @cor-branco; font-family: @font-family; font-weight: 300;
+						line-height: 30px;
+						@media (@xs) { font-size: .9em; font-weight: 400; line-height: 23px; } 
+						@media (@sm) { font-size: 1em; } 
+						@media (@md) { font-size: 1.25em; } 
+					}
+				}
+			}
+
+			// location
+			.location {
+				.rounded(8px);
+				background: @cor-branco; text-align: center;
+				@media (@xs) { margin: 0; padding: 20px; }
+				@media (@sm) { margin: 0; padding: 20px; }
+				@media (@md) { margin: 0 0 0 50px; padding: 30px; }
+
+				// about
+				.location-post { 
+					@media (@xs) { padding: 10px 10px 20px; }
+					@media (@sm) { padding: 10px 10px 20px; }
+					@media (@md) { padding: 10px 50px 30px; }
+					h2 {
+						color: @cor-azul-02; font-size: 1.5em; font-family: @font-family-alt; margin: 0 0 5px; 
+						text-transform: uppercase;
+					}
+					p {
+						color: @cor-azul-03; font-size: .8em; margin: 0; line-height: 15px;
+					}
+				}
+
+				// form
+				.locatioin-map {
+					.latitude-longitude {
+						margin:10px 0 0;
+						
+						// campos latitude e longitude
+						.campo-ltdlgt {
+							.placeholder(@color: @cor-azul-04);
+							background: @cor-azul-06; border: 1px solid @cor-azul-06; box-shadow: none; height: 50px; 
+							font-size: .9em; font-family: @font-family; float: left; margin-right: 2%; margin-top: 20px; 
+							text-transform: uppercase; width: 48%;
+							&:focus { .transition; border-color: @cor-azul-04; }
+						}
+						.campo-ltdlgt:nth-child(2) { margin-left: 2%; margin-right: 0; }
+						.campo-ltdlgt:nth-child(4) { margin-left: 2%; margin-right: 0; }
+
+						// campo check
+						.check {
+							display: inline-block; padding: 20px 0 10px; width: 100%; 
+							.campo-check {
+								float: left; margin-right: 10px; height: 20px; width: 20px;
+								@media (@xs) { float: none; margin: 0; }
+							}
+							p {
+								color: @cor-azul-02; float: left; font-family: @font-family-alt; font-weight: bold;
+								text-transform: uppercase;
+								@media (@xs) { font-size: .7em; margin: 7px 0;  }
+								@media (@sm) { font-size: .7em; margin: 7px 0;  }
+								@media (@md) { font-size: .8em; margin: 5px;  }
+								a {
+									color: @cor-azul-02; cursor: pointer; text-decoration: underline;
+									&:hover { color: @cor-laranja-01; }
+								}
+							}
+							.dialog {
+								.dialog__content {
+									a {
+										background: @cor-laranja-01; color: @cor-branco; cursor: pointer; display: table;
+										font-family: @font-family-alt; font-size: 1.2em; font-weight: bold; margin:10px auto;
+										padding: 10px 20px; text-decoration: none; text-transform: uppercase;
+										&:hover { background: @cor-laranja-02; } 
+									}
+								}
+							}
+						}
+
+						// submit
+						.campo-submit {
+							.transition;
+							background: @cor-laranja-01; border: 1px solid @cor-laranja-02; color: @cor-branco; display: block; 
+							font-family: @font-family-alt; font-size: .8em; font-weight: bold; height: 45px; margin: auto; 
+							text-transform: uppercase; width: 130px;
+							&:hover {
+								.transition;
+								background: @cor-laranja-02; border-color: ;
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+
+	// ###############################################################
+	// TimeLine
+	.timeline {
+		.timeline-content {
+			position: absolute; padding: 0 0 4em; width: 100%; height: 100%; top: 0; left: 0; 
+			overflow: auto; z-index: 2;
+			
+			// posts
+			.timeline-post {
+				margin: 40px 0 0;
+
+				// icone
+				.icon-timeline {
+					.rounded(100px);
+					border: 3px solid @cor-azul-05; display: block; height: 10px; margin: auto; 
+					width: 10px;
+
+					// line
+					.line-timeline {
+						height: 85%; position: absolute;
+						.line {
+							width: 3px; background-color: rgba(255,255,255,.05); height: 100%; display: block; 
+							margin: auto;
+						}
+					}
+
+				}
+
+				.user {
+					.rounded(5px);
+ 					background-color: rgba(255,255,255,0.25); display: table; max-width: 600px; 
+ 					margin: 0 auto 30px; padding: 30px 35px; position: relative;
+ 					@media (@xs) { padding: 45px 20px; }
+					
+					// description
+					.post-description {
+						@media (@sm) { float: left; width: 60%; }
+
+						.user-photo {
+							height: 65px; float: left; padding: 2px; width: 65px;
+							@media (@xs) { display: table; float: none; margin: auto; }
+							img {
+								.rounded(100px);
+								border: 2px solid @cor-azul-05; position: absolute; overflow: hidden;
+							}
+							.number-photos {
+								position: relative; text-align: right;
+								p {
+									.rounded(100px);
+									background-color: @cor-azul-05; color: @cor-branco; font-family: @font-family-alt; 
+									font-size: 1.2em; font-weight: 700; float: left; margin: -12px; padding: 5px 9px 2px 10px; 
+								}
+							}
+						}
+						
+						// user
+						.user-post {
+							padding: 10px; float: left; width: 75%; 
+							@media (@xs) { width: 100%; text-align: center; }
+							h2 { 
+								color: @cor-azul-05; font: 400 1.1em @font-family; margin: 3px 0; 
+								text-transform: uppercase;
+							}
+							h3 {
+								color: @cor-branco; margin: 3px 0; font: 600 .75em @font-family; 
+								text-transform: uppercase;
+							}
+							.post-content {
+								p {
+									color: @cor-branco; font: 400 .8em @font-family; line-height: 22px; 
+									margin: 25px 0 0;
+								}
+							}
+						}
+					}
+
+					.photografy-post {
+						@media (@sm) { float: left;  width: 40%; }
+						img {
+							@media (@xs) { margin: auto; }
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+
+	// ###############################################################
+	// Top Users
+	.top-users {	
+		.top-users-content {
+			position: absolute; padding: 0 0 4em; width: 100%; height: 100%; top: 0; left: 0; overflow: auto; 
+			z-index: 2;
+
+			// wgt
+			.wgt-user {
+				.rounded(5px);
+				background-color: rgba(255, 255, 255, 0.25);  display: table; margin: 25px auto; padding: 20px 10px;
+				@media (@sm) { width: 480px; } 
+
+				// calocation user
+				.user-position {
+					float: left;
+					@media (@xs) { text-align: center; width: 100%; }
+					p {
+						color: @cor-grafite-01; font-family: @font-family; font-size: 3em; font-weight: 700; 
+						margin: 0; padding: 0 5px;
+					}
+				}
+
+				// photo
+				.user-photo {
+					height: 65px; float: left; padding: 2px; width: 65px;
+					@media (@xs) { display: table; float: none; margin: auto; }
+					img {
+						.rounded(100px);
+						border: 2px solid @cor-azul-05; position: absolute; overflow: hidden;
+					}
+					.number-photos {
+						position: relative; text-align: right;
+						p {
+							.rounded(100px);
+							background-color: @cor-azul-05; color: @cor-branco; font-family: @font-family-alt; 
+							 font-size: .9em; font-weight: 700; float: right; margin: 0; padding: 0px 6px; 
+						}
+					}
+				}
+
+				// description usuario
+				.user-description {
+					float: left; padding: 0 20px; text-transform: uppercase;
+					@media (@xs) { text-align: center; }
+					h4 {
+						color: @cor-azul-05; font-family: @font-family; font-weight: 700; font-size: 1.5em; 
+						line-height: 30px; margin: 0;
+						@media (@xs) { font-size: 1.1em; margin-top: 5px; }
+					}
+					p {
+						color: @cor-branco; margin: 0; font-family: @font-family; font-size: .8em;
+					}
+				}
+
+			}
+
+		}
+	}
+
+
+	// ###############################################################
+	// Top Tags
+	.top-tags {
+		.top-tags-content {
+			position: absolute; padding: 0 0 4em; width: 100%; height: 100%; top: 0; left: 0; overflow: auto; 
+			z-index: 2;
+
+			// wgt
+			.wgt-tag {
+				.rounded(5px);
+				background-color: rgba(255, 255, 255, 0.25);  display: table; margin: 25px auto; padding: 20px 10px;
+				@media (@sm) { width: 480px; } 
+
+				// calocation tags
+				.tag-position {
+					float: left;
+					@media (@xs) { text-align: center; width: 100%; }
+					p {
+						color: @cor-grafite-01; font-family: @font-family; font-size: 3em; font-weight: 700; 
+						margin: 0; padding: 0 5px;
+					}
+				}
+
+				// description tag
+				.tag-description {
+					float: left; padding: 10px 20px; text-transform: uppercase;
+					@media (@xs) { text-align: center; width: 100%; }
+					h4 {
+						color: @cor-azul-05; font-family: @font-family; font-weight: 700; font-size: 1.5em; 
+						line-height: 30px; margin: 0;
+						@media (@xs) { font-size: 1.2em; margin-top: 5px; }
+					}
+					p {
+						color: @cor-branco; margin: 0; font-family: @font-family; font-size: .8em;
+					}
+				}
+
+			}
+
+		}
+	}
+
+
+	// ###############################################################
+	// conections
+	.conections {
+		.conections-content {
+			display: table; margin: auto; padding: 100px 0 0; position: relative; float: none; z-index: 300;
+			p {
+				color: @cor-branco;
+			}
+		}
+	}
+
+
+}

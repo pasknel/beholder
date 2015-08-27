@@ -1,0 +1,78 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+<div class="main">
+
+	<!-- TimeLine -->
+	<section class="timeline" id="timeline">
+		
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-timeline.jpg" %}" alt="Beholder timeline">
+		</div>
+
+		<div class="container">
+			
+			<!-- content -->
+			<div class="timeline-content">
+				
+				<!-- title -->
+				<div class="title-content">
+					<h3>TimeLine</h3>
+					<div class="line-timeline">
+						<span class="line"></span>
+					</div>
+				</div>
+				
+				<!-- posts -->
+				<div class="timeline-post">
+
+					<!-- wgt post -->
+                    {% for tip in object_list %}
+                        <!-- icon elipse -->
+                        <div class="icon-timeline">
+	                        <!-- line -->
+	                        <div class="line-timeline">
+		                        <span class="line"></span>
+	                        </div>
+                        </div>
+
+                        <div class="user">
+
+	                    <!-- description -->
+	                    <div class="post-description">
+
+		                    <!-- photografy -->
+		                    <div class="user-photo">
+			                    <img src="{{ tip.author.profile_picture }}" width="60px" height="60px">
+			                    <div class="number-photos">
+                                    <p><span class="fa fa-foursquare"></span></p>
+                                </div>
+		                    </div>
+
+		                    <!-- Date & Hour -->
+		                    <div class="user-post">
+			                    <h2>@{{ tip.author.name }}</h2>
+			                    <h3>{{ tip.dateOfCreation }}</h3>
+			                    <div class="post-content">
+				                    <p>
+					                {{ tip.text }}
+				                    </p>
+			                    </div>
+		                    </div>
+	                    </div>
+
+	                    <!-- Post -->
+                        <div class="photografy-post">
+                            <img class="img-responsive" src="{% static "source/img/foursquare.png" %}" width="240px" height="240px" alt="Post">
+	                    </div>
+
+                    </div>
+                    {% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>
+{% include "footer.html" %}

@@ -1,0 +1,39 @@
+{% load static from staticfiles %}
+<!-- top -->
+<div class="topo">
+	<div class="container">
+		<nav class="navbar navbar-default">
+		    
+		    <!-- mobile display -->
+		    <div class="navbar-header">
+		      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar" aria-expanded="false">
+		        	<span class="fa fa-bars"></span>
+		      	</button>
+		      	<a class="navbar-brand" href="/">
+			      	<h1>
+			      		<img class="img-responsive" src="{% static "source/img/marca.png" %}" alt="BeHolder" width="250">
+			      	</h1>
+		      	</a>
+		    </div>
+
+			<!-- menu -->
+		    <div class="collapse navbar-collapse" id="top-navbar">
+		      	<ul class="nav navbar-nav navbar-right" role="tablist">
+			        <li><a href="/posts/"><span class="line-link"></span>Timeline</a></li>
+                    <li><a href="/networks/"><span class="line-link"></span>Networks</a></li>
+			        <li><a href="/users/"><span class="line-link"></span>Users</a></li>
+			        <li><a href="/tags/"><span class="line-link"></span>Tags</a></li>
+                    <li><a href="/places/"><span class="line-link"></span>Places</a></li>
+			        <li><a href="/graph/"><span class="line-link"></span>Graph</a></li>
+		      	</ul>
+		    </div>
+
+		</nav>
+	</div>
+	
+	<!-- beta -->
+	<div class="beta">
+		<img src="{% static "source/img/beta.png" %}">
+	</div>
+
+</div>

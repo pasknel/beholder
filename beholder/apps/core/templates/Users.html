@@ -1,0 +1,63 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+<div class="main">
+
+	<!-- top Users -->
+	<section class="top-users" id="top-users">
+
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-tops.jpg" %}" alt="BeHolder topusers">
+		</div>
+
+		<div class="container">
+			<div class="top-users-content">
+
+				<!-- title -->
+				<div class="title-content">
+					<h3>Top Users</h3>
+				</div>
+
+                {% for user in object_list %}
+				<!-- wgt -->
+                    {% if user.post_set.count > 0 %}
+                        <div class="wgt-user">
+        	                <!-- user position  -->
+	                        <div class="user-position">
+		                        <p>#{{ forloop.counter }}</p>
+	                        </div>
+
+	                        <!-- photografy -->
+	                        <div class="user-photo">
+		                        <img src="{{ user.profile_picture }}" width="60px" height="60px">
+		                        <div class="number-photos">
+			                        <p>{{ user.post_set.count }}</p>
+		                        </div>
+                    	    </div>
+
+	                        <!-- user description -->
+	                        <div class="user-description">
+		                        <h4><a href="/users/{{ user.login }}/">@{{ user.login }}</a></h4>
+		                        <p>{{ user.name }}</p>
+		                        {% if user.post_set.count == 1 %}
+                                    <p>{{ user.post_set.count }} publication</p>
+                                {% elif user.post_set.count > 1 %}
+                                    <p>{{ user.post_set.count }} publications</p>
+                                {% endif %}
+                                {% if user.connection_set.count == 1 %}
+                                    <p><a href="/connections/from/{{ user.login }}/">{{ user.connection_set.count }} connection</a></p>
+                                {% elif user.connection_set.count > 1 %}
+                                    <p><a href="/connections/from/{{ user.login }}/">{{ user.connection_set.count }} connections</a></p>
+                                {% endif %}
+                                <p><a href="/tags/from/{{ user.login }}/">User top tags</a></p>
+	                        </div>
+                        </div>
+                    {% endif %}
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+</div>
+{% include "footer.html" %}

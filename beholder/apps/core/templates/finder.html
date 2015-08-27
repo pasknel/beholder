@@ -1,0 +1,154 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+
+<!-- content -->
+<div class="main">
+
+	<!-- Home -->
+	<section class="home">
+
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-home.jpg" %}" alt="BeHolder timeline">
+		</div>
+
+		<div class="container">
+			<div class="home-content">
+
+				<!-- left column -->
+				<div class="col-sm-6">
+
+					<!-- marca -->
+					<div class="marca-home">
+						<img class="img-responsive" src="{% static "source/img/marca-home.png" %}" alt="">
+					</div>
+
+					<!-- about -->
+					<div class="about">
+						<div class="wgt-post">
+							<p>
+								Beholder is a pentest tool designed for information gathering in social networks.
+							</p>
+							<p>
+								Analyze media, identify people and discover social patterns with Beholder !
+							</p>
+                            <p>
+                                Beholder was created by Pasknel Ribeiro (MorphusLabs).
+                            </p>
+						</div>
+					</div>
+				</div>
+				<!-- left column -->
+
+				<!-- right column -->
+				<div class="col-sm-6">
+
+					<!-- location -->
+					<div class="location">
+
+						<!-- about -->
+						<div class="location-post">
+							<h2>Location</h2>
+							<p>
+								Choose the coordenates for the geolocation search
+							</p>
+						</div>
+
+						<!-- map -->
+						<div class="locatioin-map">
+
+							<!-- google map -->
+							<div id="map-div" style="border:0; width: 100%; height: 220px;" allowfullscreen>
+                            </div>
+
+							<!-- fields -->
+							<div class="latitude-longitude">
+								<form action="/finder/" method="POST">{% csrf_token %}
+
+									<!-- latitude longitude -->
+									<input id="latitude" name="latitude" class="campo-ltdlgt form-control" placeholder="latitude" type="text" >
+									<input id="longitude" name="longitude" class="campo-ltdlgt form-control" placeholder="longitude" type="text">
+									<input type="hidden" name="code" value={{ code }}><br>
+                                    <!-- latitude longitude -->
+
+									<!-- select -->
+									<select class="campo-ltdlgt form-control" name="posts" id="posts">
+										<option value="100">100 posts</option>
+                                        <option value="250">250 posts</option>
+										<option value="500">500 posts</option>
+                                        <option value="750">750 posts</option>
+										<option value="1000">1000 posts</option>
+									</select>
+									<select class="campo-ltdlgt form-control" name="radius" id="radius">
+										<option value="100">100 meters</option>
+                                        <option value="250">250 meters</option>
+										<option value="500">500 meters</option>
+                                        <option value="750">750 meters</option>
+										<option value="1000">1000 meters</option>
+									</select>
+									<!-- select -->
+
+									<!-- checkbox -->
+									<div class="check">
+										<input class="campo-check" type="checkbox">
+										<p>
+											I HAVE READ AND ACCEPT THE
+											<a data-dialog="somedialog" class="trigger">terms
+											</a>
+										</p>
+
+										<!-- termos -->
+										<div id="somedialog" class="dialog">
+											<div class="dialog__overlay"></div>
+											<div class="dialog__content">
+												<h2>
+													termos
+												</h2>
+												<div>
+													<a class="action" data-dialog-close>fechar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- input submit -->
+									<input class="campo-submit form-control" value="Search" type="submit">
+
+								</form>
+                                <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+                                 <script>
+                                    function initialize() {
+                                        var position = new google.maps.LatLng("-3.731861", "-38.526670");
+                                        var map = new google.maps.Map(document.getElementById('map-div'), {
+                                            zoom: 2,
+                                            center: position
+                                        });
+                                        var marker = new google.maps.Marker({
+                                            position: position,
+                                            map: map,
+                                            draggable: true,
+                                        });
+                                        google.maps.event.addListener(marker, 'dragend', function(overlay, point) {
+                                            var position = marker.getPosition();
+                                            document.getElementById("latitude").value = position.lat();
+                                            document.getElementById("longitude").value = position.lng();
+                                        });
+                                    }
+                                    google.maps.event.addDomListener(window, 'load', initialize);
+                                </script>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<!-- right column -->
+
+			</div>
+
+		</div>
+	</section>
+
+</div>
+
+{% include "footer.html" %}

@@ -1,0 +1,45 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+<div class="main">
+
+	<!-- top tags -->
+	<section class="top-tags" id="top-tags">
+
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-tops.jpg" %}" alt="BeHolder topusers">
+		</div>
+
+		<div class="container">
+			<div class="top-tags-content">
+
+				<!-- title -->
+				<div class="title-content">
+					<h3>Top Tags</h3>
+				</div>
+
+                {% for tag in object_list %}
+				    <!-- wgt -->
+                    <div class="wgt-tag">
+                    	<!-- tag position  -->
+	                    <div class="tag-position">
+		                    <p>#{{ forloop.counter }}</p>
+	                    </div>
+                    	<!-- tag description -->
+	                    <div class="tag-description">
+		                    <h4><a href="/tags/{{ tag.tag }}/">#{{ tag.tag }}</a></h4>
+		                    {% if tag.total == 1 %}
+                                <p>{{ tag.total }} Publication</p>
+                            {% else %}
+                                <p>{{ tag.total }} Publications</p>
+                            {% endif %}
+	                    </div>
+                    </div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+</div>
+{% include "footer.html" %}

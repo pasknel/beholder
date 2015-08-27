@@ -1,0 +1,87 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+<div class="main">
+
+	<!-- TimeLine -->
+	<section class="timeline" id="timeline">
+
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-timeline.jpg" %}" alt="Beholder timeline">
+		</div>
+
+		<div class="container">
+
+			<!-- content -->
+			<div class="timeline-content">
+
+				<!-- title -->
+				<div class="title-content">
+					<h3>TimeLine</h3>
+					<div class="line-timeline">
+						<span class="line"></span>
+					</div>
+				</div>
+
+				<!-- posts -->
+				<div class="timeline-post">
+
+					<!-- wgt post -->
+                    {% for connection in object_list %}
+                        <!-- icon elipse -->
+                        <div class="icon-timeline">
+	                        <!-- line -->
+	                        <div class="line-timeline">
+		                        <span class="line"></span>
+	                        </div>
+                        </div>
+
+                        <div class="user">
+
+	                    <!-- description -->
+	                    <div class="post-description">
+
+		                    <!-- photografy -->
+		                    <div class="user-photo">
+			                    <img src="{{ connection.post.author.profile_picture }}" width="60px" height="60px">
+			                    <div class="number-photos">
+				                    {% if connection.post.network == "Instagram" %}
+				                        <p><span class="fa fa-instagram"></span></p>
+                                    {% elif connection.post.network == "Flickr" %}
+				                        <p><span class="fa fa-flickr"></span></p>
+                                    {% else %}
+                                        <p><span class="fa fa-twitter"></span></p>
+                                    {% endif %}
+			                    </div>
+		                    </div>
+
+		                    <!-- Date & Hour -->
+		                    <div class="user-post">
+			                    <h2>@{{ connection.post.author.login }}</h2>
+			                    <h3>{{ connection.post.dateOfCreation }}</h3>
+			                    <div class="post-content">
+				                    <p>
+					                {{ connection.post.text }}
+				                    </p>
+			                    </div>
+		                    </div>
+	                    </div>
+
+	                    <!-- Post -->
+	                    <div class="photografy-post">
+                            {% if connection.post.network == "Twitter" %}
+                                <img class="img-responsive" src="{% static "source/img/twitter.png" %}" width="240px" height="240px" alt="Post">
+                            {% else %}
+		                        <img class="img-responsive" src="{{ connection.post.photo }}" width="240px" height="240px" alt="Post">
+                            {% endif %}
+	                    </div>
+                    </div>
+                    {% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>
+{% include "footer.html" %}

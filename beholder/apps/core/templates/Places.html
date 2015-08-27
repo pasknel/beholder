@@ -1,0 +1,50 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+<div class="main">
+
+	<!-- top tags -->
+	<section class="top-tags" id="top-tags">
+
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-tops.jpg" %}" alt="Beholder places">
+		</div>
+
+		<div class="container">
+			<div class="top-tags-content">
+
+				<!-- title -->
+				<div class="title-content">
+					<h3>Top Places</h3>
+				</div>
+
+                {% for place in object_list %}
+				    <!-- wgt -->
+                    <div class="wgt-tag">
+                    	<!-- tag position  -->
+	                    <div class="tag-position">
+		                    <p>#{{ forloop.counter }}</p>
+	                    </div>
+                    	<!-- tag description -->
+	                    <div class="tag-description">
+		                    <h4><a href="/places/{{ place.id }}/">{{ place.name }}</a></h4>
+		                    {% if place.checkins == 1 %}
+                                <p>{{ place.checkins }} Checkin</p>
+                            {% else %}
+                                <p>{{ place.checkins }} Checkins</p>
+                            {% endif %}
+                            {% if place.tip_set.count == 1 %}
+                                <p>{{ place.tip_set.count }} Tip</p>
+                            {% else %}
+                                <p>{{ place.tip_set.count }} Tips</p>
+                            {% endif %}
+	                    </div>
+                    </div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+
+</div>
+{% include "footer.html" %}

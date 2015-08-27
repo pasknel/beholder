@@ -1,0 +1,39 @@
+// Tipografia
+@font-weight-regular: 400;
+@font-weight-bold:    700;
+@font-family:         "Open Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+@font-family-alt:     "brandon_grotesquebold", Arial, "Helvetica Neue", Helvetica, sans-serif; 
+@font-size-base:      16px;
+@font-size-large:     ceil((@font-size-base * 1.25)); // ~20px
+@font-size-small:     ceil((@font-size-base * 0.75)); // ~12px
+
+// Tipografia Mixins 
+.texto-padrao     { font:@font-weight-regular @font-size-base @font-family;}
+
+
+// title content
+.title-content {
+	margin: 120px 0 0;
+	h3 {
+		.rounded(5px);
+		background: @cor-azul-05; color: @cor-branco; display: table; margin: auto; padding: 10px 30px; 
+		font-family: @font-family; font-weight: 600; font-size: .9em; text-transform: uppercase; 
+		text-align: center;
+	}
+	.line-timeline {
+		height: 6%; position: absolute; width: 100%;
+		.line {
+			width: 3px; background-color: rgba(255,255,255,.1); height: 100%; display: block; 
+			margin: auto;
+		}
+	}
+}
+
+// img background
+.img-background {
+	@media (@xs) { display: block; overflow: hidden; min-height: 650px; position: relative; width: 100%; }
+	img {	
+		height: 100%; position: absolute; z-index: 1;
+		@media (@sm) { width: 100%; }
+	}
+}

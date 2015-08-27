@@ -1,0 +1,94 @@
+{% load static from staticfiles %}
+{% include "header.html" %}
+
+<!-- main -->
+<div class="main">
+
+	<!-- conections -->
+	<section class="conections" id="conections">
+
+		<!-- page background -->
+		<div class="img-background">
+			<img src="{% static "source/img/bg-home.jpg" %}" alt="Beholder timeline">
+		</div>
+
+		<div class="container">
+
+			<!-- DIV CENTRALIZADA -->
+			<!-- DIV CENTRALIZADA -->
+			<!-- DIV CENTRALIZADA -->
+
+			<div class="conections-content" id="conections-content">
+				<p>div centralizada</p>
+			</div>
+
+			<!-- DIV CENTRALIZADA -->
+			<!-- DIV CENTRALIZADA -->
+			<!-- DIV CENTRALIZADA -->
+            <script src="{% static "js/main-head.js" %}"></script>
+            <script src="{% static "source/js/lib/modernizr.custom.js" %}"></script>
+
+            <script src="http://visjs.org/dist/vis.js"></script>
+            <link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css">
+            <script type="text/javascript">
+                var nodes = null;
+                var edges = null;
+                var network = null;
+
+                function draw() {
+                    users = {};
+                    sizes = {};
+                    edges = [];
+
+                    {% for connection in object_list %}
+                        users["{{ connection.post.author.login }}"] = "{{ connection.post.author.profile_picture }}";
+                        if (sizes.hasOwnProperty("{{ connection.post.author.login }}")) {
+                            sizes["{{ connection.post.author.login }}"] += {{ connection.user.count }} * 20;
+                        } else {
+                            sizes["{{ connection.post.author.login }}"] = {{ connection.user.count }} * 20;
+                        }
+                        {% for user in connection.user.all %}
+                            {% if user.post_set.count > 0 %}
+                                users["{{ user.login }}"] = "{{ user.profile_picture }}";
+                                edges.push({from: "{{ user.login }}", to: "{{ connection.post.author.login }}", arrows:'to', width: 3});
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+                    nodes = [];
+                    Object.keys(users).forEach(function (key) {
+                        if (sizes[key]) {
+                            nodes.push({id: key,  shape: 'circularImage', image: users[key], label: key, value: sizes[key]});
+                        } else {
+                            nodes.push({id: key,  shape: 'circularImage', image: users[key], label: key, value: 20});
+                        }
+                    });
+
+                    // create a network
+                    var container = document.getElementById('conections-content');
+                    var data = {
+                        nodes: nodes,
+                        edges: edges
+                    };
+                    var options = {
+                        nodes: {
+                            size:60,
+                            font:{color:'#000000', size:20}
+                        },
+                        edges: {
+                            color: '#31B404'
+                        }
+                    };
+                    network = new vis.Network(container, data, options);
+                }
+
+                draw();
+            </script>
+
+		</div>
+
+	</section>
+
+</div>
+
+{% include "footer.html" %}

@@ -1,0 +1,30 @@
+{% load static from staticfiles %}
+<footer>
+
+	<div class="rodape">
+		<div class="logo-morphuslabs">
+			<img class="img-responsive" src="{% static "source/img/logo-morphuslabs.png" %}" alt="">
+		</div>
+	</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="{% static "js/main.js" %}"></script>
+<script src="{% static "source/js/lib/dialogFx.js" %}"></script>
+<script src="{% static "source/js/lib/classie.js" %}"></script>
+
+<script>
+	(function() {
+
+		var dlgtrigger = document.querySelector( '[data-dialog]' ),
+			somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+			dlg = new DialogFx( somedialog );
+
+		dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+	})();
+</script>
+
+</body>
+</html>

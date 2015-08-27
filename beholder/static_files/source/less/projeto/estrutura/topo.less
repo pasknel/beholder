@@ -1,0 +1,116 @@
+
+/* 
+ * topo 
+ */
+
+header {
+
+
+	// top menu
+	.topo {
+		.transition(1s);
+		background: @topo-bg; position: fixed; width: 100%; z-index: 300; 
+		@media (@sm) { opacity: .9; }
+		.navbar {
+			background-color: transparent; border: 0; margin: auto;
+			@media (@md) { max-width: 960px; }
+			
+			// top brand
+			.navbar-header {
+				padding: 0; margin: 5px 0; 
+				button {
+					height: 50px; font-size: 2em; margin: 8px 0; padding: 0; width: 50px;
+					span {
+						color: @cor-branco;
+					}
+
+					// affects
+					&:focus { 
+						.transition;
+						background: transparent; border-color: @cor-laranja-01;
+						span {
+							color: @cor-laranja-01;
+						} 
+					}
+					&:hover {
+						.transition;
+						background: transparent; border-color: @cor-laranja-01;
+						span {
+							color: @cor-laranja-01;
+						}
+					}
+					// affects
+
+				}
+				.navbar-brand {
+					display: table; padding: 5px 0;
+					@media (@xs) { padding: 15px 0; width: 180px; }
+					h1 {
+						margin: 0;
+					}
+				}
+			}
+
+			// menu
+			.navbar-collapse {
+				ul {					
+					@media (@sm) { padding: 20px 0; }
+					@media (@md) { padding: 19px 10px; }
+					li {
+						a {
+							border-right: 1px solid @cor-cinza-01; color: @cor-cinza-01; 
+							font: 1em @font-family; text-transform: uppercase;
+							@media (@xs) { border: 0; padding: 20px; text-align: center; }
+							@media (@sm) { padding: 5px 10px; font-size: .9em; }
+							@media (@md) { padding: 5px 20px; font-size:  1em; }
+							.line-link {
+								background: transparent; display: block; margin: -5px auto 5px; 
+								height: 1px; width: 5px;
+							}
+							&:hover {
+								.transition;
+								color: @cor-laranja-01; 
+								.line-link {
+									.transition;
+									background: @cor-laranja-01; width: 25px; 
+								}
+							}
+						}
+						.active {
+							.transition;
+							color: @cor-laranja-01; 
+							.line-link {
+								.transition;
+								background: @cor-laranja-01; width: 25px; 
+							}
+						}
+					}
+					li:last-child {
+						a { border: 0; }
+					}
+					.active {
+						a {
+							.transition;
+							background: transparent; color: @cor-laranja-01; 
+							.line-link {
+								.transition;
+								background: @cor-laranja-01; width: 25px; 
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.beta {
+			position: absolute; top: 0; right: 0; 
+			@media (@xs) { display: none; }
+		}
+	}
+	.topo-block {
+		.transition(0.5s);
+		display: block; opacity: .9; margin-top: 0;
+	}
+	// top menu
+
+}
